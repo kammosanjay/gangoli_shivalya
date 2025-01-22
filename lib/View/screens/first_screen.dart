@@ -41,8 +41,11 @@ class _FirstScreenState extends State<FirstScreen> {
               alignment: Alignment.center,
               child: Container(
                 child: Text(
-                  "Hello User!",
-                  style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+                  "Welcome!",
+                  style: TextStyle(
+                      fontSize: 40,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue),
                 ),
               ),
             ),
@@ -65,12 +68,15 @@ class _FirstScreenState extends State<FirstScreen> {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
-                      child: Text("User"),
+                      child: Text(
+                        "User",
+                        style: TextStyle(color: Colors.blue),
+                      ),
                     ),
                     customTextFeild(
                         focusNode: _focusName,
                         name: "User",
-                        iconColor: Colors.amber[700],
+                        iconColor: Colors.lightBlue,
                         icon: Icon(Icons.person_2_outlined),
                         action: TextInputAction.next),
                     SizedBox(
@@ -78,11 +84,12 @@ class _FirstScreenState extends State<FirstScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0),
-                      child: Text("Password"),
+                      child: Text("Password",
+                          style: TextStyle(color: Colors.blue)),
                     ),
                     customTextFeild(
                         focusNode: _focusPass,
-                        iconColor: Colors.amber[700],
+                        iconColor: Colors.lightBlue,
                         icon: Icon(Icons.password),
                         suffIcons: Icon(Icons.remove_red_eye_outlined),
                         isPassword: true,
@@ -103,8 +110,10 @@ class _FirstScreenState extends State<FirstScreen> {
                                     width: 20,
                                     child: Checkbox(
                                       value: isChecked.value,
-                                      activeColor: Colors.white,
-                                      checkColor: Colors.black,
+                                      fillColor:
+                                          MaterialStatePropertyAll(Colors.blue),
+                                      activeColor: Colors.blue,
+                                      checkColor: Colors.white,
                                       onChanged: (value) {
                                         isChecked.value = !isChecked.value;
                                       },
@@ -113,7 +122,10 @@ class _FirstScreenState extends State<FirstScreen> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text("Remember Me!"),
+                                  child: Text(
+                                    "Remember Me!",
+                                    style: TextStyle(color: Colors.blue),
+                                  ),
                                 )
                               ],
                             ),
@@ -160,7 +172,6 @@ class _FirstScreenState extends State<FirstScreen> {
                       ],
                     ),
                     Spacer(),
-                  
                     Padding(
                       padding: const EdgeInsets.only(
                         bottom: 10.0,
@@ -201,29 +212,35 @@ class _FirstScreenState extends State<FirstScreen> {
       Color? iconColor,
       Icon? suffIcons,
       TextInputAction? action}) {
-    return TextFormField(
-      focusNode: focusNode,
-      textInputAction: action,
-      obscureText: isPassword,
-      decoration: InputDecoration(
-        suffixIcon: suffIcons,
-        prefixIcon: icon,
-        prefixIconColor: iconColor,
+    return Card(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10))),
+      elevation: 5,
+      child: TextFormField(
+        focusNode: focusNode,
+        textAlignVertical: TextAlignVertical.center,
+        textInputAction: action,
+        obscureText: isPassword,
+        decoration: InputDecoration(
+          suffixIcon: suffIcons,
+          prefixIcon: icon,
+          prefixIconColor: iconColor,
 
-        constraints: BoxConstraints(
-            maxHeight: 50, maxWidth: MediaQuery.of(context).size.width),
+          constraints: BoxConstraints(
+              maxHeight: 50, maxWidth: MediaQuery.of(context).size.width),
 
-        label: Text(name!),
-        hintText: hint,
+          // label: Text(name!),
+          hintText: hint,
 
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.green),
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.black),
-            borderRadius: BorderRadius.all(Radius.circular(10))),
-        // border: OutlineInputBorder(
-        //     borderRadius: BorderRadius.all(Radius.circular(10)))
+          enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blueAccent.withOpacity(0.5)),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.blue),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+          // border: OutlineInputBorder(
+          //     borderRadius: BorderRadius.all(Radius.circular(10)))
+        ),
       ),
     );
   }
