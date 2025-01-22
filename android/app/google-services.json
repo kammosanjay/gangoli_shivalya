@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "720244504148",
+    "project_id": "fir-pro-87705",
+    "storage_bucket": "fir-pro-87705.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:720244504148:android:daf0edb353b3fc8dcc1fc1",
+        "android_client_info": {
+          "package_name": "com.example.gangoli_shivalya"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACqHjxULjPNg0bu7QFdE3EYcRuAq0EGVc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
