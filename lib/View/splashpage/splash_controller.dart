@@ -7,7 +7,7 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     Future.delayed(const Duration(seconds: 3), () {
-      Get.offAndToNamed(MyPageNames.first);
+      Get.offAndToNamed(MyPageNames.login);
     });
     super.onInit();
   }
