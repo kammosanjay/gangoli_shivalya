@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gangoli_shivalya/constant/customWidget.dart';
 import 'package:gangoli_shivalya/resources/mypagenames/mypage_names.dart';
 import 'package:get/get.dart';
 
@@ -17,8 +18,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    var h = MediaQuery.of(context).size.height;
-    var w = MediaQuery.of(context).size.width;
+      var h = MediaQuery.of(context).size.height;
+      var w = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.only(left: 20.0, right: 20, top: 100),
@@ -72,12 +73,14 @@ class _LoginPageState extends State<LoginPage> {
                                         color: Colors.blue, fontSize: 20),
                                   ),
                                 ),
-                                customTextFeild(
-                                    focusNode: _focusName,
-                                    name: "User",
-                                    iconColor: Colors.lightBlue,
-                                    icon: Icon(Icons.person_2_outlined),
-                                    action: TextInputAction.next),
+                                CustomWidgets.customTextFeild(
+                                  context: context,
+                                  focusNode: _focusName,
+                                  name: "User",
+                                  icon: Icon(Icons.person_2_outlined),
+                                  iconColor: Colors.lightBlue,
+                                  action: TextInputAction.next,
+                                ),
                                 SizedBox(
                                   height: 20,
                                 ),
@@ -87,14 +90,17 @@ class _LoginPageState extends State<LoginPage> {
                                       style: TextStyle(
                                           color: Colors.blue, fontSize: 20)),
                                 ),
-                                customTextFeild(
-                                    focusNode: _focusPass,
-                                    iconColor: Colors.lightBlue,
-                                    icon: Icon(Icons.password),
-                                    suffIcons:
-                                        Icon(Icons.remove_red_eye_outlined),
-                                    isPassword: true,
-                                    name: "Password"),
+                                CustomWidgets.customTextFeild(
+                                  context: context,
+                                  focusNode: _focusPass,
+                                  name: "Password",
+                                  icon: Icon(Icons.password),
+
+                                  iconColor: Colors.lightBlue,
+                                  suffIcons:
+                                      Icon(Icons.remove_red_eye_outlined),
+                                  isPassword: true,
+                                ),
                               ],
                             ),
                       SizedBox(
@@ -136,7 +142,9 @@ class _LoginPageState extends State<LoginPage> {
                             SizedBox(
                               height: 40,
                               child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Get.toNamed(MyPageNames.forgot);
+                                  },
                                   child: Text("Forgot Password?")),
                             )
                           ],
@@ -184,19 +192,20 @@ class _LoginPageState extends State<LoginPage> {
                         child: Container(
                           child: Obx(
                             () => isPhone.value
-                                ? InkWell(onTap: () {
-                                    if (isPhone.value) {
-                                      isPhone.value = false;
-                                    }
-                                },
-                                  child: Text(
+                                ? InkWell(
+                                    onTap: () {
+                                      if (isPhone.value) {
+                                        isPhone.value = false;
+                                      }
+                                    },
+                                    child: Text(
                                       'Login with User and Password',
                                       style: TextStyle(
                                           color: Colors.blue,
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold),
                                     ),
-                                )
+                                  )
                                 : Text(
                                     'Login with Mobile',
                                     style: TextStyle(
@@ -256,7 +265,9 @@ class _LoginPageState extends State<LoginPage> {
                       Align(
                         alignment: Alignment.center,
                         child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.toNamed(MyPageNames.signup);
+                            },
                             child: Text("Don't have an Account? Sign up")),
                       )
                     ]),
@@ -278,56 +289,16 @@ class _LoginPageState extends State<LoginPage> {
           child: Text("Mobile Number",
               style: TextStyle(color: Colors.blue, fontSize: 20)),
         ),
-        customTextFeild(
-            name: "Enter Phone Number",
-            hint: "Phone Number",
-            icon: Icon(Icons.mobile_friendly),
-            iconColor: Colors.lightBlue),
+        CustomWidgets.customTextFeild(
+          context: context,
+          focusNode: _focusName,
+          name: "User",
+          icon: Icon(Icons.person_2_outlined),
+          iconColor: Colors.lightBlue,
+          action: TextInputAction.next,
+        ),
       ],
     ));
-  }
-
-  Widget customTextFeild(
-      {String? name,
-      String? hint,
-      FocusNode? focusNode,
-      Icon? icon,
-      bool isPassword = false,
-      Color? iconColor,
-      Icon? suffIcons,
-      TextInputAction? action}) {
-    return Card(
-      margin: EdgeInsets.zero,
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10))),
-      elevation: 5,
-      child: TextFormField(
-        focusNode: focusNode,
-        textAlignVertical: TextAlignVertical.center,
-        textInputAction: action,
-        obscureText: isPassword,
-        decoration: InputDecoration(
-          suffixIcon: suffIcons,
-          prefixIcon: icon,
-          prefixIconColor: iconColor,
-
-          constraints: BoxConstraints(
-              maxHeight: 50, maxWidth: MediaQuery.of(context).size.width),
-
-          // label: Text(name!),
-          hintText: hint,
-
-          enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blueAccent.withOpacity(0.5)),
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          focusedBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.blue),
-              borderRadius: BorderRadius.all(Radius.circular(10))),
-          // border: OutlineInputBorder(
-          //     borderRadius: BorderRadius.all(Radius.circular(10)))
-        ),
-      ),
-    );
   }
 }
 

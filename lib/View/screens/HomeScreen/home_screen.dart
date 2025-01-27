@@ -10,21 +10,14 @@ class MyHomeScreen extends StatefulWidget {
 class _MyHomeScreenState extends State<MyHomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(),
-     body: Container());
+    return Scaffold(appBar: appBar(context), body: Container());
   }
-
-  
-  
 }
+
 PreferredSizeWidget appBar(BuildContext context) {
-    return AppBar(
-      title: const Text('Home Screen'),
-      leading: IconButton(
-        icon: Icon(Icons.menu),
-        onPressed: () {
-          Scaffold.of(context).openDrawer();
-        },
-      ),
-    );
-  }
+  return AppBar(
+   elevation: 0,
+    title: const Text('Home Screen'),
+   
+  );
+}
