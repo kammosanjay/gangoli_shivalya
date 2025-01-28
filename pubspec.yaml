@@ -44,6 +44,8 @@ dependencies:
   android_intent_plus: 
   lottie: 
   firebase_core: 
+  sqflite: 
+  path: 
 
 dev_dependencies:
   flutter_test:

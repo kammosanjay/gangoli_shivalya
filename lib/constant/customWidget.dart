@@ -7,6 +7,7 @@ class CustomWidgets {
     required BuildContext context, // Pass BuildContext as a parameter
     String? name,
     String? hint,
+    TextEditingController? controller,
     FocusNode? focusNode,
     Icon? icon,
     double? width,
@@ -23,6 +24,7 @@ class CustomWidgets {
       elevation: 5,
       child: TextFormField(
         focusNode: focusNode,
+        controller: controller ?? TextEditingController(),
         textAlignVertical: TextAlignVertical.center,
         textInputAction: action,
         obscureText: isPassword,
@@ -47,21 +49,22 @@ class CustomWidgets {
 
   ///Button Widget
 
-  Widget customButton(
+  static Widget customButton(
       {required BuildContext context, // Pass BuildContext as a parameter
-      String? buttonName}) {
+      String? buttonName,
+      Function? onPressed}) {
     var w = MediaQuery.of(context).size.width;
     var h = MediaQuery.of(context).size.height;
     return ElevatedButton(
       onPressed: () {
-        // Get.toNamed(MyPageNames.home);
+        onPressed!();
       },
       child: Text(
         buttonName!,
         style: TextStyle(fontSize: 20),
       ),
       style: ElevatedButton.styleFrom(
-        fixedSize: Size(w, h * 0.2), // Width: 200, Height: 50
+        fixedSize: Size(w, h * 0.07), // Width: 200, Height: 50
         backgroundColor: Colors.blue,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10), // Set border radius
