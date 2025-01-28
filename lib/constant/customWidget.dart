@@ -12,6 +12,7 @@ class CustomWidgets {
     Icon? icon,
     double? width,
     double? height,
+    var validate,
     bool isPassword = false,
     Color? iconColor,
     Icon? suffIcons,
@@ -24,6 +25,7 @@ class CustomWidgets {
       elevation: 5,
       child: TextFormField(
         focusNode: focusNode,
+        validator: validate,
         controller: controller ?? TextEditingController(),
         textAlignVertical: TextAlignVertical.center,
         textInputAction: action,
