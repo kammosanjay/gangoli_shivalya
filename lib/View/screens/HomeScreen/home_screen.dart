@@ -3,6 +3,7 @@ import 'package:gangoli_shivalya/constant/customWidget.dart';
 import 'package:gangoli_shivalya/database/dbHelper.dart';
 import 'package:get/get.dart';
 
+
 class MyHomeScreen extends StatefulWidget {
   const MyHomeScreen({super.key});
 
@@ -78,7 +79,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                                   Text(
                                     usersList[index]
                                         [DBHelper.COLUMN_NOTE_TITLE],
-                                     style: TextStyle(
+                                    style: TextStyle(
                                         color: Colors.blue, fontSize: 16),
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
@@ -154,8 +155,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                         child: ListTile(
                           title: Text(
                             usersList[index][DBHelper.COLUMN_NOTE_TITLE],
-                             style: TextStyle(
-                                        color: Colors.blue, fontSize: 15),
+                            style: TextStyle(color: Colors.blue, fontSize: 15),
                           ),
                           subtitle:
                               Text(usersList[index][DBHelper.COLUMN_NOTE_DESC]),
@@ -196,6 +196,7 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                     );
                   }),
         ),
+       
       ]),
     );
   }
@@ -302,15 +303,11 @@ class _MyHomeScreenState extends State<MyHomeScreen> {
                 ? Text(
                     "Change Layout",
                     style: TextStyle(
-                        
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white),
+                        fontWeight: FontWeight.bold, color: Colors.white),
                   )
                 : Text(selectedView.value,
                     style: TextStyle(
-                       
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white))),
+                        fontWeight: FontWeight.bold, color: Colors.white))),
           ],
         ),
         PopupMenuButton(

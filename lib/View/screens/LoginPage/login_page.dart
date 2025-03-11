@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gangoli_shivalya/constant/customWidget.dart';
+import 'package:gangoli_shivalya/database/dbHelper.dart';
 import 'package:gangoli_shivalya/resources/mypagenames/mypage_names.dart';
 import 'package:get/get.dart';
 
@@ -20,12 +21,15 @@ class _LoginPageState extends State<LoginPage> {
 
   late TextEditingController userC;
   late TextEditingController passC;
+
+  DBHelper? dbHelper;
   @override
   void initState() {
     super.initState();
 
     userC = TextEditingController();
     passC = TextEditingController();
+    dbHelper = DBHelper.instance;
   }
 
   @override
@@ -276,10 +280,13 @@ class _LoginPageState extends State<LoginPage> {
                             bottom: 10.0,
                           ),
                           child: ElevatedButton(
-                            onPressed: () {
+                            onPressed: () async {
                               if (_formKey.currentState!.validate()) {
+                               
                                 Get.toNamed(MyPageNames.home);
                               }
+                              
+                             
                             },
                             child: Text(
                               "Sign In",

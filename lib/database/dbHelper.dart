@@ -13,8 +13,8 @@ class DBHelper {
   static final String COLUMN_NOTE_SNO = "s_no";
   static final String COLUMN_NOTE_TITLE = "title";
   static final String COLUMN_NOTE_DESC = "desc";
-  // static final String COLUMN_USER = "userName";
-  // static final String COLUMN_PASS = "password";
+  static final String COLUMN_USER = "userName";
+  static final String COLUMN_PASS = "password";
 
   Database? myDB;
 
@@ -39,7 +39,7 @@ class DBHelper {
         version: 1,
         onCreate: (db, version) {
           db.execute(
-              "CREATE TABLE $TABLE_NOTE ($COLUMN_NOTE_SNO INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_NOTE_TITLE TEXT, $COLUMN_NOTE_DESC TEXT )");
+              "CREATE TABLE $TABLE_NOTE ($COLUMN_NOTE_SNO INTEGER PRIMARY KEY AUTOINCREMENT, $COLUMN_NOTE_TITLE TEXT, $COLUMN_NOTE_DESC TEXT,$COLUMN_USER TEXT,$COLUMN_PASS TEXT )");
         },
       );
     } catch (e) {
@@ -47,7 +47,6 @@ class DBHelper {
     }
   }
 
- 
   // Future<bool> addNote({required String uTitle, required String uPass}) async {
   //   print("addNote");
   //   Map<String, dynamic> row = {
